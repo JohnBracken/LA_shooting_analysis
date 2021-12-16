@@ -3,18 +3,18 @@
 
 require 'csv'
 
-$la_shooting_data = Array.new
+la_shooting_data = Array.new
 
 #Open csv file of shooting incidents data.
 #Write to a an array.
 CSV.foreach("LA_Shooting_Incidents_2010_to_Present.csv", 
 headers: true) do |row|
-    $la_shooting_data.push(row)
+    la_shooting_data.push(row)
 end
 
 
 #Convert data to integers and floats where appropriate.
-$la_shooting_data.each do |row|
+la_shooting_data.each do |row|
     row["# OF INVOLVED DEPUTIES"] = row["# OF INVOLVED DEPUTIES"].to_i
     row["# OF PERSONS"] = row["# OF PERSONS"].to_i
     row["# OF PERSONS WOUNDED"] = row["# OF PERSONS WOUNDED"].to_i
@@ -74,13 +74,13 @@ f.puts "# LA Shooting Incident Data Summary:"
 
 colnames.each do |field|
     col = field
-    $max_result = find_max($la_shooting_data, col)
-    $min_result = find_min($la_shooting_data, col)
-    $avg_result = find_average($la_shooting_data, col)
+    max_result = find_max(la_shooting_data, col)
+    min_result = find_min(la_shooting_data, col)
+    avg_result = find_average(la_shooting_data, col)
 
-    f.puts "* MAX " + col + ": " + $max_result.to_s 
-    f.puts "* MIN " + col + ": " + $min_result.to_s
-    f.puts "* AVG " + col + ": " + $avg_result.to_s 
+    f.puts "* MAX " + col + ": " + max_result.to_s 
+    f.puts "* MIN " + col + ": " + min_result.to_s
+    f.puts "* AVG " + col + ": " + avg_result.to_s 
 end
 
 f.close
