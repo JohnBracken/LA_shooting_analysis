@@ -68,9 +68,9 @@ colnames = Array["# OF INVOLVED DEPUTIES", "# OF PERSONS",
 "APPROX_LONGITUDE"]
 
 #Write output to file
-f = File.open('LA_shootings_summary.txt', 'w')
+f = File.open('LA_shootings_summary.md', 'w')
 
-f.puts "LA Shooting Incident Data Summary:"
+f.puts "# LA Shooting Incident Data Summary:"
 
 colnames.each do |field|
     col = field
@@ -78,9 +78,9 @@ colnames.each do |field|
     $min_result = find_min($la_shooting_data, col)
     $avg_result = find_average($la_shooting_data, col)
 
-    f.puts "MAX " + col + ": " + $max_result.to_s 
-    f.puts "MIN " + col + ": " + $min_result.to_s
-    f.puts "AVG " + col + ": " + $avg_result.to_s 
+    f.puts "* MAX " + col + ": " + $max_result.to_s 
+    f.puts "* MIN " + col + ": " + $min_result.to_s
+    f.puts "* AVG " + col + ": " + $avg_result.to_s 
 end
 
 f.close
